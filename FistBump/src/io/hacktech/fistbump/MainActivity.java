@@ -32,11 +32,11 @@ public class MainActivity extends BaseActivity {
 			public void onClick(View v) {
 				login_btn.setEnabled(false);
 				register_btn.setEnabled(false);
-				AccountControl.login(
-						((EditText) findViewById(R.id.login_email)).getText()
-								.toString(),
-						((EditText) findViewById(R.id.login_pwd)).getText()
-								.toString(),
+				String email = ((EditText) findViewById(R.id.login_email))
+						.getText().toString();
+				String pwd = ((EditText) findViewById(R.id.login_pwd))
+						.getText().toString();
+				AccountControl.login(email, pwd,
 						new SimpleLoginAuthenticatedHandler() {
 							@Override
 							public void authenticated(
