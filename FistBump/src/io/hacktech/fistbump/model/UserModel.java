@@ -20,4 +20,9 @@ public class UserModel extends HashMap<String, String> {
 	public String getPwd() {
 		return this.get("pwd");
 	}
+	
+	public static void main(String[] args){
+		
+	System.out.println("test");
+	}
 }

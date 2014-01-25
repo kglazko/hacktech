@@ -12,7 +12,7 @@ public class GlobalConstants {
 	public static SimpleLogin SIMPLELOGIN;
 
 	public static void initialize() {
-		GlobalConstants.FIREBASE_ROOT = new Firebase(FIREBASE_URL);
+		FIREBASE_ROOT = new Firebase(FIREBASE_URL);
 		FIREBASE_AUTH = FIREBASE_ROOT.child("auth");
 		SIMPLELOGIN = new SimpleLogin(FIREBASE_AUTH);
 	}
@@ -20,7 +20,7 @@ public class GlobalConstants {
 	public static void main(String[] args) {
 		//this resets everything
 		Firebase fb = new Firebase(
-				"https://sweltering-fire-1593.firebaseio.com/test");
+				"https://sweltering-fire-1593.firebaseio.com");
 		HashMap<String, String> root = new HashMap<String, String>();
 		root.put("auth", "");
 		fb.setValue(root);

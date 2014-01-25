@@ -45,4 +45,9 @@ public class AccountControl {
 					}
 				});
 	}
+	
+	public static void main(String[] args){
+		GlobalConstants.initialize();
+		register("roycraft3@gmail.com","mypass");
+	}
 }
