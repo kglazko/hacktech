@@ -13,6 +13,7 @@ public class MainActivity extends BaseActivity {
 		
 		bindLoginButton();
 		bindFindUsersButton();
+		bindFistBumpButton();
 	}
 	
 	private void bindLoginButton() {
