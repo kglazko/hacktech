@@ -9,6 +9,8 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 
 public class BaseActivity extends SherlockActivity {
+    public static final String APP_SHARED_PREFS = "app_preferences";
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

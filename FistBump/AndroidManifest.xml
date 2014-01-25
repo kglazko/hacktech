@@ -33,11 +33,19 @@
             android:name="io.hacktech.fistbump.LocationActivity"
             android:label="@string/find_users">
         </activity>
-		<activity
-            android:name="io.hacktech.fistbump.LoginActivity"
+
+        <activity
+            android:name="io.hacktech.fistbump.usersetup.NotLoggedInLandingActivity"
             android:label="@string/login">
         </activity>
-        
+        <activity
+            android:name="io.hacktech.fistbump.usersetup.LoginActivity"
+            android:label="@string/login">
+        </activity>
+		<activity
+            android:name="io.hacktech.fistbump.usersetup.RegistrationActivity"
+            android:label="@string/register">
+        </activity>
     </application>
 
 </manifest>

@@ -9,18 +9,13 @@
     tools:context=".MainActivity" >
 
     <Button
-        android:id="@+id/login_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/login" />
-
-    <Button
         android:id="@+id/find_users_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/login_btn"
-        android:layout_below="@+id/login_btn"
-        android:layout_marginTop="24dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="30dp"
         android:text="@string/find_users" />
 
 </RelativeLayout>

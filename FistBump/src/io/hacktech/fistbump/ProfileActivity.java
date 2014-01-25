@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.widget.EditText;
 
 public class ProfileActivity extends BaseActivity {
-    public static final String PREFS_NAME = "SavedProfile";
+    public static final String PROFILE_PREFS = "profile";
 	String[] fields = { "full_name", "phone_number", "favorite_color", "favorite_joke" };
 
     @Override
@@ -15,7 +15,7 @@ public class ProfileActivity extends BaseActivity {
 		
 		restoreProfile();
     }
-        
+    
     @Override
     protected void onStop() {
     	super.onStop();
@@ -24,7 +24,7 @@ public class ProfileActivity extends BaseActivity {
     }
     
     private void saveProfile() {
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        SharedPreferences settings = getSharedPreferences(PROFILE_PREFS, 0);
         SharedPreferences.Editor editor = settings.edit();
         
         for (int i = 0; i < fields.length; ++i) {
@@ -50,7 +50,7 @@ public class ProfileActivity extends BaseActivity {
     }
     
     private void restoreProfile() {
-		SharedPreferences savedProfile = getSharedPreferences(PREFS_NAME, 0);
+		SharedPreferences savedProfile = getSharedPreferences(PROFILE_PREFS, 0);
 
 		for (int i = 0; i < fields.length; ++i) {
 			String field = fields[i];
