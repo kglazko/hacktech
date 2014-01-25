@@ -1,6 +1,7 @@
 package io.hacktech.fistbump;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import com.actionbarsherlock.app.SherlockActivity;
@@ -32,6 +33,11 @@ public class BaseActivity extends SherlockActivity {
 				Intent intent = new Intent(getBaseContext(), ProfileActivity.class);
 				startActivity(intent);
 				return true;
+			}
+			case R.id.help: {
+				String url = "http://www.google.com";
+				Intent openUrlIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+				startActivity(openUrlIntent);
 			}
 			default: return super.onOptionsItemSelected(item);
 		}
