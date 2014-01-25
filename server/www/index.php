@@ -3,7 +3,7 @@
 if (!isset($_POST['action'])) {
     return;
 }
-$db = mysqli_connect('localhost', 'hacktech', 'happyhacking', 'fistbump');
+$db = mysqli_connect('localhost', 'root', 'happyhacking', 'fistbump');
 if (mysqli_connect_errno($db)) {
     //handle error hwere   
     echo 'COULD NOT CONNECT TO DB: ' . mysqli_connect_error();
