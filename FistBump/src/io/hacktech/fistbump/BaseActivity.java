@@ -3,6 +3,7 @@ package io.hacktech.fistbump;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import io.hacktech.fistbump.*;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;
@@ -33,6 +34,11 @@ public class BaseActivity extends SherlockActivity {
 				Intent intent = new Intent(getBaseContext(), ProfileActivity.class);
 				startActivity(intent);
 				return true;
+			}
+			case R.id.find_users: {
+				Intent intent = new Intent(getBaseContext(), LocationActivity.class);
+				startActivity(intent);
+				return true;	
 			}
 			case R.id.help: {
 				String url = "http://www.google.com";

@@ -1,5 +1,6 @@
 package io.hacktech.fistbump;
 
+<<<<<<< HEAD
 import com.firebase.simplelogin.SimpleLoginAuthenticatedHandler;
 import com.firebase.simplelogin.User;
 
@@ -9,12 +10,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+=======
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+>>>>>>> 20123c3b955404459c5695864c6d0fdfeba887c0
 
 public class MainActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+<<<<<<< HEAD
 
 		GlobalConstants.initialize();
 
@@ -117,5 +125,42 @@ public class MainActivity extends BaseActivity {
 						});
 			}
 		});
+=======
+		
+		bindLoginButton();
+		bindFindUsersButton();
+		bindFistBumpButton();
+	}
+	
+	private void bindLoginButton() {
+		Button button = (Button)findViewById(R.id.login_btn);
+		button.setOnClickListener(new Button.OnClickListener() {
+		    public void onClick(View v) {
+				Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+				startActivity(intent);
+		    }
+		});
+	}
+	
+	private void bindFindUsersButton() {
+		Button buttonOne = (Button)findViewById(R.id.find_users_btn);
+		buttonOne.setOnClickListener(new Button.OnClickListener() {
+		    public void onClick(View v) {
+				Intent intent = new Intent(getBaseContext(), LocationActivity.class);
+				startActivity(intent);
+		    }
+		});
+		
+	}
+		
+		private void bindFistBumpButton() {
+			Button buttonOne = (Button)findViewById(R.id.bump_user_btn);
+			buttonOne.setOnClickListener(new Button.OnClickListener() {
+			    public void onClick(View v) {
+					Intent intent = new Intent(getBaseContext(), NFCCommunication.class);
+					startActivity(intent);
+			    }
+			});
+>>>>>>> 20123c3b955404459c5695864c6d0fdfeba887c0
 	}
 }
