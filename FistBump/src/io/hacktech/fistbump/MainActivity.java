@@ -4,6 +4,7 @@ import com.firebase.simplelogin.SimpleLoginAuthenticatedHandler;
 import com.firebase.simplelogin.User;
 
 import io.hacktech.fistbump.controller.AccountControl;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,11 +23,15 @@ public class MainActivity extends BaseActivity {
 	}
 
 	private void initializeButtons() {
+		final MainActivity me = this;
+		final Button login_btn = (Button) findViewById(R.id.login_btn);
+		final Button register_btn = (Button) findViewById(R.id.register_btn);
 		// login
-		final Button button = (Button) findViewById(R.id.login_btn);
-		button.setOnClickListener(new View.OnClickListener() {
-			
+		login_btn.setOnClickListener(new View.OnClickListener() {
+
 			public void onClick(View v) {
+				login_btn.setEnabled(false);
+				register_btn.setEnabled(false);
 				AccountControl.login(
 						((EditText) findViewById(R.id.login_email)).getText()
 								.toString(),
@@ -38,8 +43,29 @@ public class MainActivity extends BaseActivity {
 									com.firebase.simplelogin.enums.Error error,
 									User user) {
 								if (error != null) {
-									// There was an error logging into this
-									// account
+									String error_msg;
+									switch (error) {
+									case InvalidEmail:
+										error_msg = "Invalid email address";
+										break;
+									case InvalidPassword:
+										error_msg = "Entered password was incorrect";
+										break;
+									case PermissionDenied:
+										error_msg = "App does not have internet privileges.";
+										break;
+									default:
+										error_msg = "Connection error";
+										break;
+									}
+									AlertDialog dialog = new AlertDialog.Builder(
+											me).setMessage(error_msg)
+											.setTitle("Failure!")
+											.setPositiveButton("Ok", null)
+											.create();
+									dialog.show();
+									login_btn.setEnabled(true);
+									register_btn.setEnabled(true);
 								} else {
 									// We are good switch to different view
 								}
@@ -48,11 +74,12 @@ public class MainActivity extends BaseActivity {
 			}
 		});
 		// register
-		final Button button2 = (Button) findViewById(R.id.register_btn);
-		button2.setOnClickListener(new View.OnClickListener() {
+		register_btn.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
+				login_btn.setEnabled(false);
+				register_btn.setEnabled(false);
 				AccountControl.register(
 						((EditText) findViewById(R.id.login_email)).getText()
 								.toString(),
@@ -63,9 +90,28 @@ public class MainActivity extends BaseActivity {
 									com.firebase.simplelogin.enums.Error error,
 									User user) {
 								if (error != null) {
-									// There was an error creating this account
+									String error_msg;
+									switch (error) {
+									case EmailTaken:
+										error_msg = "Email already taken";
+										break;
+									case PermissionDenied:
+										error_msg = "App does not have internet privileges.";
+										break;
+									default:
+										error_msg = "Connection error";
+										break;
+									}
+									AlertDialog dialog = new AlertDialog.Builder(
+											me).setMessage(error_msg)
+											.setTitle("Failure!")
+											.setPositiveButton("Ok", null)
+											.create();
+									dialog.show();
+									login_btn.setEnabled(true);
+									register_btn.setEnabled(true);
 								} else {
-									// We are now registered, login time!
+									// login and gogogo
 								}
 							}
 						});
