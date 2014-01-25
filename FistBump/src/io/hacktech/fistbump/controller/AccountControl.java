@@ -1,6 +1,6 @@
-package src.io.hacktech.fistbump.controller;
+package io.hacktech.fistbump.controller;
 
-import src.io.hacktech.fistbump.GlobalConstants;
+import io.hacktech.fistbump.GlobalConstants;
 
 import com.firebase.client.Firebase;
 import com.firebase.simplelogin.SimpleLogin;

@@ -1,4 +1,4 @@
-package src.io.hacktech.fistbump;
+package io.hacktech.fistbump;
 
 import java.util.HashMap;
 
