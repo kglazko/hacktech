@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($_POST['action'])) {
-    return;
+    return -2;
 }
 $db = mysqli_connect('localhost', 'root', 'happyhacking', 'fistbump');
 if (mysqli_connect_errno($db)) {
