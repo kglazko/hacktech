@@ -34,6 +34,11 @@ public class BaseActivity extends SherlockActivity {
 				startActivity(intent);
 				return true;
 			}
+			case R.id.find_users: {
+				Intent intent = new Intent(getBaseContext(), LocationActivity.class);
+				startActivity(intent);
+				return true;	
+			}
 			case R.id.help: {
 				String url = "http://www.google.com";
 				Intent openUrlIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));

@@ -10,8 +10,15 @@
         android:orderInCategory="200"
         android:showAsAction="always|withText"
         android:title="@string/profile" />
-    <item android:id="@+id/help"
+    <item
+        android:id="@+id/find_users"
         android:orderInCategory="300"
+        android:showAsAction="ifRoom"
+        android:icon="@drawable/ic_location_search"
+        android:title="@string/find_users" />
+    <item 
+        android:id="@+id/help"
+        android:orderInCategory="400"
         android:showAsAction="never"
         android:icon="@drawable/ic_help"
         android:title="@string/help" />
