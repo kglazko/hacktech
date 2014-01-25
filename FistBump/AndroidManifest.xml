@@ -26,7 +26,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="io.hacktech.fistbump.ProfileActivity" android:label="@string/profile"></activity>
+        <activity
+            android:name="io.hacktech.fistbump.ProfileActivity"
+            android:label="@string/profile" />
+        <activity
+            android:name="io.hacktech.fistbump.LocationActivity"
+            android:label="@string/find_users">
+        </activity>
+		<activity
+            android:name="io.hacktech.fistbump.LoginActivity"
+            android:label="@string/login">
+        </activity>
+        
     </application>
 
 </manifest>
