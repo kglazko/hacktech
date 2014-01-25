@@ -22,5 +22,14 @@
         android:layout_below="@+id/login_btn"
         android:layout_marginTop="24dp"
         android:text="@string/find_users" />
+    
+       <Button
+        android:id="@+id/bump_user_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/find_users_btn"
+        android:layout_below="@+id/find_users_btn"
+        android:layout_marginTop="24dp"
+        android:text="@string/bump_device" />
 
 </RelativeLayout>

@@ -33,5 +33,16 @@ public class MainActivity extends BaseActivity {
 				startActivity(intent);
 		    }
 		});
+		
+	}
+		
+		private void bindFistBumpButton() {
+			Button buttonOne = (Button)findViewById(R.id.bump_user_btn);
+			buttonOne.setOnClickListener(new Button.OnClickListener() {
+			    public void onClick(View v) {
+					Intent intent = new Intent(getBaseContext(), NFCCommunication.class);
+					startActivity(intent);
+			    }
+			});
 	}
 }
