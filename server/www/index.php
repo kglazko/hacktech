@@ -15,6 +15,6 @@ if ($_POST['action'] == 'newusr') {
     }
     //check if exists but meh
     $db->query("INSERT INTO main(usr,pwd,email) VALUES (" . $_POST['usr'] . "," . $_POST['pwd'] . "," . $_POST['email'] . ")");
-    return;
+    return 0;
 }
 ?>
