@@ -15,39 +15,18 @@ public class AccountControl {
 		auth.checkAuthStatus(handler);
 	}
 
-	public static void login(String email, String pwd) {
-		GlobalConstants.SIMPLELOGIN.loginWithEmail(email, pwd,
-				new SimpleLoginAuthenticatedHandler() {
-					@Override
-					public void authenticated(
-							com.firebase.simplelogin.enums.Error error,
-							User user) {
-						if (error != null) {
-							// There was an error logging into this account
-						} else {
-							// We are good
-						}
-					}
-				});
+	public static void login(String email, String pwd,
+			SimpleLoginAuthenticatedHandler handler) {
+		GlobalConstants.SIMPLELOGIN.loginWithEmail(email, pwd, handler);
 	}
 
-	public static void register(String email, String pwd) {
-		GlobalConstants.SIMPLELOGIN.createUser(email, pwd,
-				new SimpleLoginAuthenticatedHandler() {
-					public void authenticated(
-							com.firebase.simplelogin.enums.Error error,
-							User user) {
-						if (error != null) {
-							// There was an error creating this account
-						} else {
-							// We are now logged in
-						}
-					}
-				});
+	public static void register(String email, String pwd,
+			SimpleLoginAuthenticatedHandler handler) {
+		GlobalConstants.SIMPLELOGIN.createUser(email, pwd, handler);
 	}
-	
-	public static void main(String[] args){
-		GlobalConstants.initialize();
-		register("roycraft3@gmail.com","mypass");
+
+	public static void logout() {
+		GlobalConstants.SIMPLELOGIN.logout();
 	}
+
 }

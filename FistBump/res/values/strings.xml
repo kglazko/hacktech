@@ -12,9 +12,10 @@
     <string name="profile">Profile</string>
     <string name="help">Help</string>
     <string name="find_users">Find Fistbumpers</string>
-    
+    <string name="bump_device">Fistbump Now</string>
     <string name="email_hint">Email Address</string>
     <string name="pwd_hint">Password</string>
+    <string name="hello">Testing..testing..</string>
     <string name="birthday">Birthday</string>
 
     <!--  User setup stuff -->
