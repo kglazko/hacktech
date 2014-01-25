@@ -3,6 +3,7 @@ package io.hacktech.fistbump;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import io.hacktech.fistbump.*;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.view.Menu;

@@ -14,7 +14,7 @@ import org.ndeftools.wellknown.TextRecord;
 
 
 
-import com.nfc.comm.*;
+
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Context;
