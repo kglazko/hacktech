@@ -31,19 +31,22 @@ public class NFCCommunication extends Activity implements CreateNdefMessageCallb
         OnNdefPushCompleteCallback {
     NfcAdapter mNfcAdapter;
     TextView mInfoText;
-    SharedPreferences usrpref = this.getSharedPreferences(
-			BaseActivity.APP_SHARED_PREFS, 0);
-    String name = usrpref.getString("full_name", "");;
-    String favorite_color = usrpref.getString("favorite_color", "");
-    String looking = usrpref.getString("looking_for", "");
-    String joke = usrpref.getString("favorite_joke", "");;
+    String name;
+    String favorite_color;
+    String looking;
+    String joke;
     private static final int MESSAGE_SENT = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.beam);
-
+        SharedPreferences usrpref = this.getSharedPreferences(
+    			BaseActivity.APP_SHARED_PREFS, 0);
+         name = usrpref.getString("full_name", "");;
+         favorite_color = usrpref.getString("favorite_color", "");
+         looking = usrpref.getString("looking_for", "");
+         joke = usrpref.getString("favorite_joke", "");;
         mInfoText = (TextView) findViewById(R.id.title);
         // Check for available NFC Adapter
         mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
