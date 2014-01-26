@@ -11,11 +11,9 @@ public class UserGame extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Bundle extras = getIntent().getExtras();  
-        name = extras.getString("stringpass");
         
-        TextView myTextView= (TextView) findViewById(R.id.mySharedString);
-        myTextView.setText(name);
+        
+ 
        
 		setContentView(R.layout.game_play);
 		//bindFinishedButton();
