@@ -1,30 +1,46 @@
 package io.hacktech.fistbump;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 public class ProfileActivity extends BaseActivity {
-    public static final String PROFILE_PREFS = "profile";
-	String[] fields = { "full_name", "phone_number", "favorite_color", "favorite_joke" };
+	public static String[] fields = { "full_name", "phone_number", "favorite_color", "favorite_joke", "looking_for" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_profile);
-		
-		restoreProfile();
+		bindFinishedButton();
     }
-    
+
+	private void bindFinishedButton() {
+		Button button = (Button)findViewById(R.id.finished_btn);
+		button.setOnClickListener(new Button.OnClickListener() {
+		    public void onClick(View v) {
+				Intent intent = new Intent(getBaseContext(), MainActivity.class);
+				startActivity(intent);
+		    }
+		});
+	}
+	
     @Override
-    protected void onStop() {
-    	super.onStop();
-    	
+    protected void onPause() {
+    	super.onPause();
     	saveProfile();
     }
     
+    @Override
+    protected void onResume() {
+    	super.onResume();
+    	restoreProfile();
+    }
+    
     private void saveProfile() {
-        SharedPreferences settings = getSharedPreferences(PROFILE_PREFS, 0);
+        SharedPreferences settings = getSharedPreferences(BaseActivity.APP_SHARED_PREFS, 0);
         SharedPreferences.Editor editor = settings.edit();
         
         for (int i = 0; i < fields.length; ++i) {
@@ -50,7 +66,7 @@ public class ProfileActivity extends BaseActivity {
     }
     
     private void restoreProfile() {
-		SharedPreferences savedProfile = getSharedPreferences(PROFILE_PREFS, 0);
+		SharedPreferences savedProfile = getSharedPreferences(BaseActivity.APP_SHARED_PREFS, 0);
 
 		for (int i = 0; i < fields.length; ++i) {
 			String field = fields[i];
