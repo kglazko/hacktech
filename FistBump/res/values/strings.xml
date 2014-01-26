@@ -28,6 +28,7 @@
     <string name="phone_number">Phone Number</string>
     <string name="favorite_color">Favorite Color</string>
     <string name="favorite_joke">Favorite Joke</string>
+    <string name="login_slogan">Log in to FistBump.</string>
     
     <!--  Location stuff -->
     <string name="finding_users">Finding Nearby Users</string>
