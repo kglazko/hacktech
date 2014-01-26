@@ -1,9 +1,15 @@
 package io.hacktech.fistbump.controller;
 
 public class Geo {
+	
+	public static double getNearbyFolks(){
+		
+	
+	}
+	
 	public static double getDistanceFromLatLonInKm(double lat1, double lon1,
 			double lat2, double lon2) {
-		double R = 6378.137f; // Radius of the earth in km
+		double R = 6371.137f; // Radius of the earth in km
 		double dLat = Geo.deg2rad(lat2 - lat1); // deg2rad below
 		double dLon = Geo.deg2rad(lon2 - lon1);
 		double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)

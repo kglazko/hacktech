@@ -12,7 +12,7 @@ if (isset($_POST['lon']) && isset($_POST['lat']) && isset($_POST['usr']) && isse
 }
 if (isset($_GET['lon']) && isset($_GET['lat'])) {
     $spread_m = 300;
-    $earth_r = 6378137;
+    $earth_r = 6371137;
     $spread_lat = 180 / pi() * $spread_m / $earth_r;
     $spread_long = 180 / pi() * $spread_m / ($earth_r * cos(pi() * $_GET['lat'] / 180));
 
