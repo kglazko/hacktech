@@ -14,6 +14,7 @@ public class MainActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		GlobalConstants.initialize();
 
 	    SharedPreferences sharedPrefs = getApplicationContext().getSharedPreferences(APP_SHARED_PREFS, Context.MODE_PRIVATE);
 	    boolean loggedIn = sharedPrefs.getBoolean("loggedIn", false);
