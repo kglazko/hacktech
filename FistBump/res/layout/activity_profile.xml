@@ -65,4 +65,10 @@
         android:ems="10"
         android:inputType="textMultiLine" />
 
+    <Button
+        android:id="@+id/finished_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/finished" />
+
 </LinearLayout>
