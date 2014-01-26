@@ -1,7 +1,10 @@
 package io.hacktech.fistbump;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 public class ProfileActivity extends BaseActivity {
@@ -12,15 +15,29 @@ public class ProfileActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_profile);
-		
-		restoreProfile();
+		bindFinishedButton();
+    }
+
+	private void bindFinishedButton() {
+		Button button = (Button)findViewById(R.id.finished_btn);
+		button.setOnClickListener(new Button.OnClickListener() {
+		    public void onClick(View v) {
+				Intent intent = new Intent(getBaseContext(), MainActivity.class);
+				startActivity(intent);
+		    }
+		});
+	}
+	
+    @Override
+    protected void onPause() {
+    	super.onPause();
+    	saveProfile();
     }
     
     @Override
-    protected void onStop() {
-    	super.onStop();
-    	
-    	saveProfile();
+    protected void onResume() {
+    	super.onResume();
+    	restoreProfile();
     }
     
     private void saveProfile() {

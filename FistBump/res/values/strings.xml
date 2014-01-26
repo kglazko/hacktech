@@ -17,6 +17,8 @@
     <string name="pwd_hint">Password</string>
     <string name="hello">Testing..testing..</string>
     <string name="birthday">Birthday</string>
+    <string name="finished">Finished</string>
+    
 
     <!--  User setup stuff -->
     <string name="not_logged_in">You\'re not logged in. Do you want to register for a new account or log in to an existing one?</string>
