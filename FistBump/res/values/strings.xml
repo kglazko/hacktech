@@ -5,6 +5,7 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="next">Next</string>
+    <string name="menu_settings">NFC settings</string>
     
     <string name="login">Login</string>
     <string name="register">Register</string>
@@ -15,9 +16,10 @@
     <string name="bump_device">Fistbump Now</string>
     <string name="email_hint">Email Address</string>
     <string name="pwd_hint">Password</string>
-    <string name="hello">Testing..testing..</string>
+    <string name="hello">Awaiting incoming transmission from partner..</string>
     <string name="birthday">Birthday</string>
     <string name="finished">Finished</string>
+    <string name="game">Get to know</string>
 
     <!--  User setup stuff -->
     <string name="not_logged_in">You\'re not logged in. Do you want to register a new account or log in to an existing one?</string>
