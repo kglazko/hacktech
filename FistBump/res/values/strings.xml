@@ -29,5 +29,8 @@
     
     <!--  Location stuff -->
     <string name="finding_users">Finding Nearby Users</string>
+    
+    <color name="white">#FFFFFF</color>
+    <color name="blue">#0000FF</color>
 
 </resources>

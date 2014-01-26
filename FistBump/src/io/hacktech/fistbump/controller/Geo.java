@@ -2,7 +2,7 @@ package io.hacktech.fistbump.controller;
 
 public class Geo {
 	
-	public static double getNearbyFolks(){
+	public static void getNearbyFolks(){
 		
 	
 	}
