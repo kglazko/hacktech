@@ -1,67 +1,88 @@
 package io.hacktech.fistbump;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesClient;
+import com.google.android.gms.location.LocationClient;
+
 import android.content.Intent;
-import io.hacktech.fistbump.controller.Geo;
-
-import java.util.concurrent.Semaphore;
-
+import android.content.IntentSender;
+import android.location.Location;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
+import android.widget.Toast;
 
-public class LocationActivity extends BaseActivity {
-
-	Semaphore location_control = new Semaphore(0);
-	Thread thread;
-	boolean mIsActive = false;
-
+public class LocationActivity extends BaseActivity 
+		implements GooglePlayServicesClient.ConnectionCallbacks, 
+		GooglePlayServicesClient.OnConnectionFailedListener, Runnable {
+	LocationClient client;
+	Handler handler;
+	private static final int REQUEST_ID = 1338;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_location);
 
-		final LocationActivity me = this;
-		this.thread = new Thread(new Runnable() {
-			@Override
-			public void run() {
-				while (true) {
-					try {
-						me.location_control.acquire();
-						me.location_control.drainPermits();
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-					while (me.mIsActive) {
-						me.ping();
-						try {
-							Thread.sleep(300000);// 5 min
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-					}
-				}
-			}
-		});
-		this.thread.start();
-		Intent intent = new Intent(getBaseContext(), SearchResultsActivity.class);
-		startActivity(intent);
+		handler = new Handler();
+	    client = new LocationClient(this, this, this);
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		client.connect();
 	}
 
 	@Override
-	protected void onResume() {
-		super.onResume();
-		this.mIsActive = true;
-		this.location_control.drainPermits();
-		this.location_control.release();
-	}
-
-	protected void onPause() {
+	public void onPause() {
+		handler.removeCallbacks(this);
+		client.disconnect();
 		super.onPause();
-		this.mIsActive = false;
 	}
 
-	private void ping() {
-		System.out.println("pinging geo server");
-		Geo.pingGeoServer(this);
+	@Override
+	public void onConnectionFailed(ConnectionResult result) {
+		boolean anyLuck = false;
+
+		if (result.hasResolution()) {
+			try {
+				result.startResolutionForResult(this, REQUEST_ID);
+				anyLuck = true;
+			} catch (IntentSender.SendIntentException e) {
+				Log.e(getClass().getSimpleName(),
+						"Exception trying to startResolutionForResult()", e);
+			}
+		}
+
+		if (!anyLuck) {
+			Toast.makeText(this, R.string.no_fused, Toast.LENGTH_LONG)
+					.show();
+			this.finish();
+		}
+	}
+
+	@Override
+	public void onConnected(Bundle arg0) {
+		// TODO Auto-generated method stub
+		run();
+	}
+
+	@Override
+	public void onDisconnected() {
+		// TODO Auto-generated method stub
+	}
+	
+	@Override
+	public void run() {
+		Location loc = client.getLastLocation();
+		if (loc == null) {
+			handler.postDelayed(this, 250);
+		} else {
+			Log.i("LocAct transition", loc.getLatitude() + ", " + loc.getLongitude());
+			Intent intent = new Intent(this.getBaseContext(),  
+					SearchResultsActivity.class);
+			startActivity(intent);
+		}
 	}
 }

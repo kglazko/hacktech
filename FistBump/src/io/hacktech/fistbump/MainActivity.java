@@ -24,6 +24,7 @@ public class MainActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		GlobalConstants.initialize();//initialize constants
+		runLocationFragment();
 		Geo.startGPS(this, new LocationListener(){
 
 			@Override
@@ -69,6 +70,12 @@ public class MainActivity extends BaseActivity {
 	    }
 	}
 
+	private void runLocationFragment() {
+        getSupportFragmentManager().beginTransaction()
+    		.add(android.R.id.content,
+    				new LocationFragment()).commit();
+	}
+	
 	private void bindFindUsersButton() {
 		Button buttonOne = (Button)findViewById(R.id.find_users_btn);
 		buttonOne.setOnClickListener(new Button.OnClickListener() {
