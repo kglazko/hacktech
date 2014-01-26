@@ -21,6 +21,78 @@
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:background="#000000" 
-    android:textColorHint= "@android:color/white"   
+    android:textColor= "@android:color/white"
+    android:text="@string/power"
+  
     />
+
+<TextView  
+    android:id="@+id/mySharedString"
+    android:layout_marginLeft="24dp"
+    android:layout_marginRight="24dp"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_marginTop="14dp"
+    android:background="#000000" 
+    android:textColor= "@android:color/white"
+    android:text="@string/vacuum"
+  
+    />
+
+<TextView  
+    android:id="@+id/mySharedString"
+    android:layout_marginLeft="24dp"
+    android:layout_marginRight="24dp"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_marginTop="14dp"
+    android:background="#000000" 
+    android:textColor= "@android:color/white"
+    android:text="@string/MACPC"
+  
+    />
+<TextView  
+    android:id="@+id/mySharedString"
+    android:layout_marginLeft="24dp"
+    android:layout_marginRight="24dp"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_marginTop="14dp"
+    android:background="#000000" 
+    android:textColor= "@android:color/white"
+    android:text="@string/LameVDay"
+  
+    />
+
+<TextView  
+    android:id="@+id/mySharedString"
+    android:layout_marginLeft="24dp"
+    android:layout_marginRight="24dp"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_marginTop="14dp"
+    android:background="#000000" 
+    android:textColor= "@android:color/white"
+    android:text="@string/ESports"
+  
+    />
+
+<TextView  
+    android:id="@+id/mySharedString"
+    android:layout_marginLeft="24dp"
+    android:layout_marginRight="24dp"
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_marginTop="14dp"
+    android:background="#000000" 
+    android:textColor= "@android:color/white"
+    android:text="@string/Pizza"
+  
+    />
+
+
+
+
+
+
 </LinearLayout>

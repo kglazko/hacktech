@@ -20,6 +20,12 @@
     <string name="birthday">Birthday</string>
     <string name="finished">Finished</string>
     <string name="game">Get to know</string>
+    <string name="power">What is your power animal?</string>
+    <string name="vacuum">How good is a vacuum if it really sucks?</string>
+    <string name="MACPC">Mac or PC?</string>
+    <string name="LameVDay">Is Valentines Day lame?</string>
+    <string name="ESports">Sports or eSports?</string>
+    <string name="Pizza">How would scissors help a delivery man??</string>
 
     <!--  User setup stuff -->
     <string name="not_logged_in">You\'re not logged in. Do you want to register a new account or log in to an existing one?</string>
