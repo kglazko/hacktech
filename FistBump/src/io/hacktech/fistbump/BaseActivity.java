@@ -12,6 +12,7 @@ import com.actionbarsherlock.view.MenuItem;
 
 public class BaseActivity extends SherlockActivity {
     public static final String APP_SHARED_PREFS = "app_preferences";
+    public static final String[] pref_keys = { "loggedIn", "email_address", "password" };
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

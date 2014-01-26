@@ -8,8 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class ProfileActivity extends BaseActivity {
-    public static final String PROFILE_PREFS = "profile";
-	String[] fields = { "full_name", "phone_number", "favorite_color", "favorite_joke" };
+	public static String[] fields = { "full_name", "phone_number", "favorite_color", "favorite_joke", "looking_for" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +40,7 @@ public class ProfileActivity extends BaseActivity {
     }
     
     private void saveProfile() {
-        SharedPreferences settings = getSharedPreferences(PROFILE_PREFS, 0);
+        SharedPreferences settings = getSharedPreferences(BaseActivity.APP_SHARED_PREFS, 0);
         SharedPreferences.Editor editor = settings.edit();
         
         for (int i = 0; i < fields.length; ++i) {
@@ -67,7 +66,7 @@ public class ProfileActivity extends BaseActivity {
     }
     
     private void restoreProfile() {
-		SharedPreferences savedProfile = getSharedPreferences(PROFILE_PREFS, 0);
+		SharedPreferences savedProfile = getSharedPreferences(BaseActivity.APP_SHARED_PREFS, 0);
 
 		for (int i = 0; i < fields.length; ++i) {
 			String field = fields[i];
