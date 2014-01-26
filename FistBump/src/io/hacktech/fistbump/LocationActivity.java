@@ -1,0 +1,68 @@
+package io.hacktech.fistbump;
+
+import android.content.Intent;
+import io.hacktech.fistbump.controller.Geo;
+
+import java.util.concurrent.Semaphore;
+
+import android.os.Bundle;
+
+public class LocationSearchLandingActivity extends BaseActivity {
+
+	Semaphore location_control = new Semaphore(0);
+	Thread thread;
+	boolean mIsActive = false;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_location);
+		
+		Intent intent = new Intent(getBaseContext(), SearchResultsActivity.class);
+		startActivity(intent);
+
+		final LocationActivity me = this;
+		this.thread = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while (true) {
+					try {
+						me.location_control.acquire();
+						me.location_control.drainPermits();
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					while (me.mIsActive) {
+						me.ping();
+						try {
+							Thread.sleep(300000);//5 min
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+					}
+				}
+			}
+
+		});
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		this.mIsActive = true;
+		this.location_control.drainPermits();
+		this.location_control.release();
+	}
+
+	protected void onPause() {
+		super.onPause();
+		this.mIsActive = false;
+	}
+
+	private void ping() {
+		Geo.pingGeoServer(this);
+	}
+}

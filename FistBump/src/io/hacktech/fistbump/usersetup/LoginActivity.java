@@ -53,9 +53,13 @@ public class LoginActivity extends SherlockActivity {
 									case InvalidEmail:
 										error_msg = "Invalid email address";
 										break;
+									case UserDoesNotExist:
+										error_msg = "Email address not found";
+										break;
 									case InvalidPassword:
 										error_msg = "Entered password was incorrect";
 										break;
+									
 									case PermissionDenied:
 										error_msg = "App does not have internet privileges.";
 										break;
