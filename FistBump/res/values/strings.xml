@@ -19,6 +19,7 @@
     <string name="hello">Awaiting incoming transmission from partner..</string>
     <string name="birthday">Birthday</string>
     <string name="finished">Finished</string>
+    <string name="game">Get to know</string>
 
     <!--  User setup stuff -->
     <string name="not_logged_in">You\'re not logged in. Do you want to register a new account or log in to an existing one?</string>

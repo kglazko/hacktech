@@ -45,6 +45,11 @@
                 <data android:mimeType="application/io.hacktech.fistbump" />
 			</intent-filter>
         </activity>
+        
+           <activity
+            android:name="io.hacktech.fistbump.UserGame"
+            android:label="@string/app_name">
+        </activity>
 
         <activity
             android:name="io.hacktech.fistbump.ProfileActivity"

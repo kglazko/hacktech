@@ -21,6 +21,8 @@ import android.text.format.Time;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +37,7 @@ public class NFCCommunication extends Activity implements CreateNdefMessageCallb
     String favorite_color;
     String looking;
     String joke;
+    Button buttonOne;
     private static final int MESSAGE_SENT = 1;
 
     @Override
@@ -58,7 +61,19 @@ public class NFCCommunication extends Activity implements CreateNdefMessageCallb
         mNfcAdapter.setNdefPushMessageCallback(this, this);
         // Register callback to listen for message-sent success
         mNfcAdapter.setOnNdefPushCompleteCallback(this, this);
+        bindGameButton();
+        buttonOne.setEnabled(false);
     }
+    
+	private void bindGameButton() {
+		buttonOne = (Button)findViewById(R.id.play_game_btn);
+		buttonOne.setOnClickListener(new Button.OnClickListener() {
+		    public void onClick(View v) {
+				Intent intent = new Intent(getBaseContext(), UserGame.class);
+				startActivity(intent);
+		    }
+		});
+	}
 
 
     /**
@@ -136,6 +151,7 @@ public class NFCCommunication extends Activity implements CreateNdefMessageCallb
         NdefMessage msg = (NdefMessage) rawMsgs[0];
         // record 0 contains the MIME type, record 1 is the AAR, if present
         mInfoText.setText(new String(msg.getRecords()[0].getPayload()));
+        buttonOne.setEnabled(true);
     }
 
     /**
