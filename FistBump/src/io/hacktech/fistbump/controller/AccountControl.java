@@ -22,6 +22,7 @@ public class AccountControl {
 
 	public static void register(String email, String pwd,
 			SimpleLoginAuthenticatedHandler handler) {
+		//GlobalConstants.initialize();
 		GlobalConstants.SIMPLELOGIN.createUser(email, pwd, handler);
 	}
 
