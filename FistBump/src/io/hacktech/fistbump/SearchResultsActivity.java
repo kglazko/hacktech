@@ -22,7 +22,6 @@ public class SearchResultsActivity extends BaseActivity
         setContentView(R.layout.activity_searchresults);
         
 		client = new LocationClient(this, this, this);
-		client.connect();
     }
 
     @Override

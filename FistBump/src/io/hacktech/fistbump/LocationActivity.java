@@ -79,7 +79,6 @@ public class LocationActivity extends BaseActivity
 		if (loc == null) {
 			handler.postDelayed(this, 250);
 		} else {
-			Log.i("LocAct transition", loc.getLatitude() + ", " + loc.getLongitude());
 			Intent intent = new Intent(this.getBaseContext(),  
 					SearchResultsActivity.class);
 			startActivity(intent);

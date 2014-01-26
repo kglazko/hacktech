@@ -1,8 +1,6 @@
 package io.hacktech.fistbump.fragments;
 
 import io.hacktech.fistbump.R;
-import io.hacktech.fistbump.SearchResultsActivity;
-import android.content.Intent;
 import android.content.IntentSender;
 import android.location.Location;
 import android.os.Bundle;
@@ -14,10 +12,13 @@ import com.actionbarsherlock.app.SherlockFragment;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
 import com.google.android.gms.location.LocationClient;
+import com.google.android.gms.location.LocationListener;
+import com.google.android.gms.location.LocationRequest;
 
 public class LocationFragment extends SherlockFragment 
 		implements GooglePlayServicesClient.ConnectionCallbacks, 
-		GooglePlayServicesClient.OnConnectionFailedListener, Runnable {
+		GooglePlayServicesClient.OnConnectionFailedListener, LocationListener, 
+		Runnable {
 	private static final int REQUEST_ID = 1337;
 	private LocationClient client = null;
 	private Handler handler = new Handler();
@@ -48,7 +49,6 @@ public class LocationFragment extends SherlockFragment
 		if (loc == null) {
 			handler.postDelayed(this, 1000);
 		} else {
-			Log.i("location", loc.getLatitude() + ", " + loc.getLongitude());
 		}
 	}
 
@@ -75,12 +75,20 @@ public class LocationFragment extends SherlockFragment
 
 	@Override
 	public void onConnected(Bundle arg0) {
+        LocationRequest request = LocationRequest.create();
+		client.requestLocationUpdates(request, this);
 		run();
 	}
 
 	@Override
 	public void onDisconnected() {
 		// Not used
+		
+	}
+
+	@Override
+	public void onLocationChanged(Location arg0) {
+		// TODO Auto-generated method stub
 		
 	}
 }
