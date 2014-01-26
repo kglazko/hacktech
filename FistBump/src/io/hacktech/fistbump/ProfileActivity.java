@@ -1,5 +1,6 @@
 package io.hacktech.fistbump;
 
+import android.R;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
