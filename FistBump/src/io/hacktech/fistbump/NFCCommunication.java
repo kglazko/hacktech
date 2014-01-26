@@ -41,6 +41,9 @@ public class NFCCommunication extends Activity implements CreateNdefMessageCallb
 
 	protected NfcAdapter nfcAdapter;
 	protected PendingIntent nfcPendingIntent;
+	
+	//DISSS MAH STRAAAAANG
+	String received;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -115,6 +118,7 @@ public class NFCCommunication extends Activity implements CreateNdefMessageCallb
                     Log.d(TAG, " Record #" + k + " is of class " + record.getClass().getName());
                     
                     // TODO: add breakpoint or log statement and inspect record. 
+                   
                 }
                 
                 // filter out text record, increment and write back
@@ -125,6 +129,8 @@ public class NFCCommunication extends Activity implements CreateNdefMessageCallb
                 		TextRecord textRecord = (TextRecord)record;
 
                 		// parse
+                		//GIMME MY STRAAAAAANG
+                		received = textRecord.getText();
                 		int count = Integer.parseInt(textRecord.getText());
                 		// increment
                 		count++;

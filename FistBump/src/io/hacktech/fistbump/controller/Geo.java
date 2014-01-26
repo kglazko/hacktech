@@ -31,6 +31,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Criteria;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 
 public class Geo {
@@ -103,8 +104,7 @@ public class Geo {
 		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
 		nameValuePairs.add(new BasicNameValuePair("usr", email));
 		nameValuePairs.add(new BasicNameValuePair("activity", looking_for));
-		nameValuePairs.add(new BasicNameValuePair("lon", ""
-				+ loc.getLongitude()));
+		nameValuePairs.add(new BasicNameValuePair("lon", ""+loc.getLongitude()));
 		nameValuePairs
 				.add(new BasicNameValuePair("lat", "" + loc.getLatitude()));
 		HttpResponse resp = Geo.postData("http://107.170.246.175/geo.php",
@@ -139,12 +139,19 @@ public class Geo {
 		return location;
 	}
 
-	public static void testGPS(Activity activity) {
+	public static void startGPS(Activity activity, LocationListener loc_listener) {
 		LocationManager service = (LocationManager) activity
 				.getSystemService(Context.LOCATION_SERVICE);
+		service.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1, 1000,
+				loc_listener);
 		boolean enabled = service
 				.isProviderEnabled(LocationManager.GPS_PROVIDER);
-
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		// check if enabled and if not send user to the GSP settings
 		// Better solution would be to display a dialog and suggesting to
 		// go to the settings

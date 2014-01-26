@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class ProfileActivity extends BaseActivity {
-	public static String[] fields = { "full_name", "phone_number", "favorite_color", "favorite_joke", "looking_for" };
+	public static String[] fields = { "full_name", "phone_number", "favorite_color","looking_for", "favorite_joke" };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

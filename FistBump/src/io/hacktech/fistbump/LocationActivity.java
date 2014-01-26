@@ -33,7 +33,7 @@ public class LocationActivity extends BaseActivity {
 					while (me.mIsActive) {
 						me.ping();
 						try {
-							Thread.sleep(300000);//5 min
+							Thread.sleep(300000);// 5 min
 						} catch (InterruptedException e) {
 							// TODO Auto-generated catch block
 							e.printStackTrace();
@@ -42,7 +42,7 @@ public class LocationActivity extends BaseActivity {
 				}
 			}
 		});
-		
+		this.thread.start();
 		Intent intent = new Intent(getBaseContext(), SearchResultsActivity.class);
 		startActivity(intent);
 	}
@@ -61,6 +61,7 @@ public class LocationActivity extends BaseActivity {
 	}
 
 	private void ping() {
+		System.out.println("pinging geo server");
 		Geo.pingGeoServer(this);
 	}
 }

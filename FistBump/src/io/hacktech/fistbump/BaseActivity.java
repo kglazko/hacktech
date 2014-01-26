@@ -1,17 +1,15 @@
 package io.hacktech.fistbump;
 
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import io.hacktech.fistbump.*;
 
-import com.actionbarsherlock.app.SherlockActivity;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 
-public class BaseActivity extends SherlockActivity {
+public class BaseActivity extends SherlockFragmentActivity {
     public static final String APP_SHARED_PREFS = "app_preferences";
     public static final String[] pref_keys = { "loggedIn", "email_address", "password" };
     

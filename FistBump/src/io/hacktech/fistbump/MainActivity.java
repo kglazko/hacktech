@@ -1,11 +1,14 @@
 package io.hacktech.fistbump;
 
 import com.google.android.gms.common.ConnectionResult;
+import io.hacktech.fistbump.controller.Geo;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 
 import io.hacktech.fistbump.fragments.LocationFragment;
 import io.hacktech.fistbump.usersetup.NotLoggedInLandingActivity;
 import android.content.Context;
+import android.location.Location;
+import android.location.LocationListener;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +23,33 @@ public class MainActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		GlobalConstants.initialize();
+		GlobalConstants.initialize();//initialize constants
+		Geo.startGPS(this, new LocationListener(){
+
+			@Override
+			public void onLocationChanged(Location arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onProviderDisabled(String arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onProviderEnabled(String arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onStatusChanged(String arg0, int arg1, Bundle arg2) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 
 	    SharedPreferences sharedPrefs = getApplicationContext().getSharedPreferences(APP_SHARED_PREFS, Context.MODE_PRIVATE);
 	    boolean loggedIn = sharedPrefs.getBoolean("loggedIn", false);
