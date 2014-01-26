@@ -24,6 +24,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import android.app.Activity;
 import android.content.Context;
@@ -33,6 +34,7 @@ import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.util.Log;
 
 public class Geo {
 	public static HttpResponse postData(String url, List<NameValuePair> data) {
@@ -94,6 +96,23 @@ public class Geo {
 		return total;
 	}
 
+	public static void pingGeoServer(Activity activity, Location loc) {
+		SharedPreferences usrpref = activity.getSharedPreferences(
+				BaseActivity.APP_SHARED_PREFS, 0);
+
+		String email = usrpref.getString("email_address", "");
+		String looking_for = usrpref.getString("looking_for", "");
+		List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+		nameValuePairs.add(new BasicNameValuePair("usr", email));
+		nameValuePairs.add(new BasicNameValuePair("activity", looking_for));
+		nameValuePairs.add(new BasicNameValuePair("lon", ""+loc.getLongitude()));
+		nameValuePairs
+				.add(new BasicNameValuePair("lat", "" + loc.getLatitude()));
+		HttpResponse resp = Geo.postData("http://107.170.246.175/geo.php",
+				nameValuePairs);
+		// Geo.inputStreamToString(resp.getEntity().getContent());
+	}
+	
 	public static void pingGeoServer(Activity activity) {
 		SharedPreferences usrpref = activity.getSharedPreferences(
 				BaseActivity.APP_SHARED_PREFS, 0);
@@ -118,6 +137,7 @@ public class Geo {
 		String str = null;
 		try {
 			str = Geo.inputStreamToString(resp.getEntity().getContent()).toString();
+			Log.i("HttpResponse", str);
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -126,7 +146,7 @@ public class Geo {
 			e.printStackTrace();
 		}
 		List<UserPositionModel> list = (new Gson()).fromJson(str,
-				(new ArrayList<UserPositionModel>()).getClass());
+				(new TypeToken<List<UserPositionModel>>(){}).getType());
 		return list;
 	}
 

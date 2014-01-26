@@ -1,6 +1,14 @@
 package io.hacktech.fistbump.fragments;
 
+import java.util.List;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+
+import io.hacktech.fistbump.GlobalConstants;
 import io.hacktech.fistbump.R;
+import io.hacktech.fistbump.controller.Geo;
+import android.app.Activity;
 import android.content.IntentSender;
 import android.location.Location;
 import android.os.Bundle;
@@ -47,8 +55,9 @@ public class LocationFragment extends SherlockFragment
 	public void run() {
 		Location loc = client.getLastLocation();
 		if (loc == null) {
-			handler.postDelayed(this, 1000);
+			handler.postDelayed(this, 5000);
 		} else {
+			new AsyncLocationSharer().execute(getActivity(), loc);
 		}
 	}
 
@@ -90,5 +99,16 @@ public class LocationFragment extends SherlockFragment
 	public void onLocationChanged(Location arg0) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+
+	private class AsyncLocationSharer extends android.os.AsyncTask<Object, Integer, Integer> {
+		@Override
+		protected Integer doInBackground(Object... params) {
+			Activity act = (Activity) params[0];
+			Location loc = (Location) params[1];
+			Geo.pingGeoServer(act, loc);
+			return 0;
+		}
 	}
 }

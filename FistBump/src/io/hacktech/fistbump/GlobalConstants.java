@@ -10,6 +10,7 @@ public class GlobalConstants {
 	public static Firebase FIREBASE_ROOT;
 	public static Firebase FIREBASE_AUTH;
 	public static SimpleLogin SIMPLELOGIN;
+	public static String SERVER_URL = "http://107.170.246.175";
 
 	public static void initialize() {
 		FIREBASE_ROOT = new Firebase(FIREBASE_URL);

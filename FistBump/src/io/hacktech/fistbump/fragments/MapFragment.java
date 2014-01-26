@@ -10,8 +10,10 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import io.hacktech.fistbump.SherlockMapFragment;
+import io.hacktech.fistbump.model.UserPositionModel;
 
 public class MapFragment extends SherlockMapFragment {
 	private GoogleMap googleMap;
@@ -37,5 +39,11 @@ public class MapFragment extends SherlockMapFragment {
 	public void panToLocation(Location loc) {
 		LatLng latlng = new LatLng(loc.getLatitude(), loc.getLongitude());
 		googleMap.animateCamera(CameraUpdateFactory.newLatLng(latlng));
+	}
+	
+	public void addMarker(UserPositionModel p) {
+		googleMap.addMarker(new MarkerOptions().position(new LatLng(p.lat, p.lon))
+				.title(p.usr)
+				.snippet(p.activity));
 	}
 }
