@@ -5,8 +5,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="14"
-        android:targetSdkVersion="19" />
+        android:minSdkVersion="8"
+        android:targetSdkVersion="18" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -53,12 +53,19 @@
             android:name="io.hacktech.fistbump.LocationActivity"
             android:label="@string/find_users">
         </activity>
-		<activity
-            android:name="io.hacktech.fistbump.LoginActivity"
+
+        <activity
+            android:name="io.hacktech.fistbump.usersetup.NotLoggedInLandingActivity"
             android:label="@string/login">
         </activity>
-        
->>>>>>> 561dac7c03e7299a7e40945477192c4cc15e3a53
+        <activity
+            android:name="io.hacktech.fistbump.usersetup.LoginActivity"
+            android:label="@string/login">
+        </activity>
+		<activity
+            android:name="io.hacktech.fistbump.usersetup.RegistrationActivity"
+            android:label="@string/register">
+        </activity>
     </application>
     
     

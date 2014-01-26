@@ -9,107 +9,46 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity" >
     
-       <ImageView
+    <ImageView
         android:id="@+id/logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/logo" />
-
-
-    <EditText
-        android:id="@+id/login_email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/logo"
-        android:layout_below="@+id/logo"
-        android:layout_marginTop="24dp"
-        android:textColor="@android:color/white"
-        android:ems="10"
-        android:hint="@string/email_hint"
-        android:inputType="textEmailAddress" >
-
-        <requestFocus />
-    </EditText>
     
-       <EditText
-        android:id="@+id/login_pwd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/login_email"
-        android:layout_below="@+id/login_email"
-        android:textColor="@android:color/white"
-        android:ems="10"
-        android:hint="@string/pwd_hint"
-        android:inputType="textPassword" />
-       
-
-    <Button
-        android:id="@+id/login_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/login_pwd"
-        android:layout_below="@+id/login_pwd"
-        android:layout_marginTop="24dp"
-        android:gravity="center"
-		android:background="@drawable/nice_button"
-		android:textColor="@android:color/white"
-  		android:textSize="18sp"
-  		android:shadowRadius="1"
-  		android:shadowDx="1"
-  		android:shadowDy="1"
-  		android:shadowColor="@android:color/black"
-        android:text="@string/login" />
-
-
-
-
-
     <Button
         android:id="@+id/find_users_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/login_btn"
-        android:layout_below="@+id/login_btn"
+        android:layout_alignLeft="@+id/logo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_below="@+id/logo"
+        android:layout_marginLeft="33dp"
         android:layout_marginTop="24dp"
+        android:background="@drawable/nice_button"
         android:gravity="center"
-		android:background="@drawable/nice_button"
-		android:textColor="@android:color/white"
-  		android:textSize="18sp"
-  		android:shadowRadius="1"
-  		android:shadowDx="1"
-  		android:shadowDy="1"
-  		android:shadowColor="@android:color/black"
-		android:text="@string/find_users" />
+        android:shadowColor="@android:color/black"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"
+        android:text="@string/find_users"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
     
-
-
-       
-       <Button 
-  		android:id="@+id/bump_user_btn"
-  		android:layout_width="wrap_content"  
-  		android:layout_height="wrap_content"
-  		android:layout_alignLeft="@+id/find_users_btn"
-  		android:layout_below="@+id/find_users_btn"
-  		android:layout_marginTop="24dp"
-  		android:gravity="center"
-		android:background="@drawable/nice_button"
-		android:text="@string/bump_device"
-  		android:textColor="@android:color/white"
-  		android:textSize="18sp"
-  		android:shadowRadius="1"
-  		android:shadowDx="1"
-  		android:shadowDy="1"
-  		android:shadowColor="@android:color/black"
-		></Button>
-
-
     <Button
-        android:id="@+id/register_btn"
+        android:id="@+id/bump_user_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/login_pwd"
-        android:layout_toRightOf="@+id/login_btn"
-        android:text="Register" />
-
-
+        android:layout_alignLeft="@+id/find_users_btn"
+        android:layout_below="@+id/find_users_btn"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/nice_button"
+        android:gravity="center"
+        android:shadowColor="@android:color/black"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"
+        android:text="@string/bump_device"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
 </RelativeLayout>

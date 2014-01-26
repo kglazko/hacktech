@@ -1,6 +1,7 @@
 package io.hacktech.fistbump;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import io.hacktech.fistbump.*;
@@ -10,6 +11,8 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 
 public class BaseActivity extends SherlockActivity {
+    public static final String APP_SHARED_PREFS = "app_preferences";
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,6 +44,14 @@ public class BaseActivity extends SherlockActivity {
 				return true;	
 			}
 			case R.id.help: {
+				// Overload this to clear saved login information
+		        SharedPreferences settings = getSharedPreferences(APP_SHARED_PREFS, 0);
+		        SharedPreferences.Editor editor = settings.edit();
+				editor.remove("loggedIn");
+				editor.remove("email_address");
+			    editor.remove("password");
+				editor.commit();
+				
 				String url = "http://www.google.com";
 				Intent openUrlIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
 				startActivity(openUrlIntent);
