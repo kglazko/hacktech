@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.actionbarsherlock.app.SherlockActivity;
 import com.firebase.simplelogin.SimpleLoginAuthenticatedHandler;
@@ -28,7 +29,7 @@ public class RegistrationActivity extends SherlockActivity {
 	
 	private void bindNextButton() {
         final RegistrationActivity me = this;
-		final Button button = (Button) findViewById(R.id.next_btn);
+		final ImageButton button = (ImageButton) findViewById(R.id.next_btn);
 		button.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
