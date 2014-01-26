@@ -1,6 +1,8 @@
 package io.hacktech.fistbump;
 
 
+import io.hacktech.fistbump.usersetup.RegistrationActivity;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.List;
@@ -43,7 +45,7 @@ public class NFCCommunication extends Activity implements CreateNdefMessageCallb
 	protected PendingIntent nfcPendingIntent;
 	
 	//DISSS MAH STRAAAAANG
-	String received;
+	public String received;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -131,6 +133,12 @@ public class NFCCommunication extends Activity implements CreateNdefMessageCallb
                 		// parse
                 		//GIMME MY STRAAAAAANG
                 		received = textRecord.getText();
+                		
+                		//Send received to new Activity
+        				Intent intent1 = new Intent(getBaseContext(), UserGame.class);
+        				intent1.putExtra("stringpass", received); 
+        				startActivity(intent1);
+                		
                 		int count = Integer.parseInt(textRecord.getText());
                 		// increment
                 		count++;
