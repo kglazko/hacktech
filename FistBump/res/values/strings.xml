@@ -32,6 +32,8 @@
     
     <!--  Location stuff -->
     <string name="finding_users">Finding Nearby Users</string>
+    <string name="results">Users Near You</string>
+    <string name="no_maps">Sorry, this device does not support Google Maps</string>
     
     <color name="white">#FFFFFF</color>
     <color name="blue">#0000FF</color>

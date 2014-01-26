@@ -7,7 +7,7 @@ import java.util.concurrent.Semaphore;
 
 import android.os.Bundle;
 
-public class LocationSearchLandingActivity extends BaseActivity {
+public class LocationActivity extends BaseActivity {
 
 	Semaphore location_control = new Semaphore(0);
 	Thread thread;
@@ -17,13 +17,9 @@ public class LocationSearchLandingActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_location);
-		
-		Intent intent = new Intent(getBaseContext(), SearchResultsActivity.class);
-		startActivity(intent);
 
 		final LocationActivity me = this;
 		this.thread = new Thread(new Runnable() {
-
 			@Override
 			public void run() {
 				while (true) {
@@ -45,8 +41,10 @@ public class LocationSearchLandingActivity extends BaseActivity {
 					}
 				}
 			}
-
 		});
+		
+		Intent intent = new Intent(getBaseContext(), SearchResultsActivity.class);
+		startActivity(intent);
 	}
 
 	@Override
