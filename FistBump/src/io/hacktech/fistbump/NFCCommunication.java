@@ -115,6 +115,7 @@ public class NFCCommunication extends Activity implements CreateNdefMessageCallb
                     Log.d(TAG, " Record #" + k + " is of class " + record.getClass().getName());
                     
                     // TODO: add breakpoint or log statement and inspect record. 
+                   
                 }
                 
                 // filter out text record, increment and write back
