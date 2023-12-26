@@ -136,7 +136,7 @@ public class MenuInflater {
         do {
             if (eventType == XmlPullParser.START_TAG) {
                 tagName = parser.getName();
-                if (tagName.equals(XML_MENU)) {
+                if (XML_MENU.equals(tagName)) {
                     // Go to next tag
                     eventType = parser.next();
                     break;
@@ -156,11 +156,11 @@ public class MenuInflater {
                     }
 
                     tagName = parser.getName();
-                    if (tagName.equals(XML_GROUP)) {
+                    if (XML_GROUP.equals(tagName)) {
                         menuState.readGroup(attrs);
-                    } else if (tagName.equals(XML_ITEM)) {
+                    } else if (XML_ITEM.equals(tagName)) {
                         menuState.readItem(attrs);
-                    } else if (tagName.equals(XML_MENU)) {
+                    } else if (XML_MENU.equals(tagName)) {
                         // A menu start tag denotes a submenu for an item
                         SubMenu subMenu = menuState.addSubMenuItem();
 
@@ -177,9 +177,9 @@ public class MenuInflater {
                     if (lookingForEndOfUnknownTag && tagName.equals(unknownTagName)) {
                         lookingForEndOfUnknownTag = false;
                         unknownTagName = null;
-                    } else if (tagName.equals(XML_GROUP)) {
+                    } else if (XML_GROUP.equals(tagName)) {
                         menuState.resetGroup();
-                    } else if (tagName.equals(XML_ITEM)) {
+                    } else if (XML_ITEM.equals(tagName)) {
                         // Add the item if it hasn't been added (if the item was
                         // a submenu, it would have been added already)
                         if (!menuState.hasAddedItem()) {
@@ -190,7 +190,7 @@ public class MenuInflater {
                                 menuState.addItem();
                             }
                         }
-                    } else if (tagName.equals(XML_MENU)) {
+                    } else if (XML_MENU.equals(tagName)) {
                         reachedEndOfMenu = true;
                     }
                     break;
