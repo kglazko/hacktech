@@ -1,5 +1,6 @@
 package io.hacktech.fistbump.controller;
 
+import io.github.pixee.security.BoundedLineReader;
 import io.hacktech.fistbump.BaseActivity;
 import io.hacktech.fistbump.ProfileActivity;
 import io.hacktech.fistbump.model.UserPositionModel;
@@ -84,7 +85,7 @@ public class Geo {
 
 		// Read response until the end
 		try {
-			while ((line = rd.readLine()) != null) {
+			while ((line = BoundedLineReader.readLine(rd, 5_000_000)) != null) {
 				total.append(line);
 			}
 		} catch (IOException e) {
